@@ -2,9 +2,9 @@ from PIL import Image
 from os import path, listdir
 import os
 
-INPUT_FOLDER = "/workspaces/ObligatoryBadApple/textures/dice/vanilla"
-OUTPUT_FOLDER = "/workspaces/ObligatoryBadApple/textures/dice/dithered"
-SIZE = (40, 40)
+INPUT_FOLDER = "/workspaces/ObligatoryBadApple/src/imgProcessing/textures/dice/inverted"
+OUTPUT_FOLDER = "/workspaces/ObligatoryBadApple/src/imgProcessing/textures/dice/inverted/dithered/"
+SIZE = (20, 20)
 
 for img_path in listdir(INPUT_FOLDER):
     with Image.open(path.join(INPUT_FOLDER, img_path)) as img:
@@ -12,9 +12,9 @@ for img_path in listdir(INPUT_FOLDER):
         input_image = img
 
         # Resize the image to 16x16 using the Lanczos filter
-        resized_image = input_image.resize(SIZE, Image.LANCZOS)
+        resized_image = input_image.resize(SIZE, Image.LANCZOS) # type: ignore
         # Convert the image to a palette-based image with dithering
-        dithered_image = resized_image.convert("P", dither=Image.FLOYDSTEINBERG)
+        dithered_image = resized_image.convert("P", dither=Image.FLOYDSTEINBERG) # type: ignore
 
         # Ensure the output folder exists
         os.makedirs(OUTPUT_FOLDER, exist_ok=True)
