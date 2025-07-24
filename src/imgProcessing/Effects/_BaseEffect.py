@@ -21,7 +21,7 @@ class BaseImageProcessor:
         if not os.path.splitext(filepath)[1].lower() in ['.png', '.jpg', '.jpeg', '.bmp', '.gif', '.tiff']:
             BaseImageProcessor.logger.error(f"Unsupported file type: {os.path.splitext(filepath)[1]}")
             raise ValueError(f"Unsupported file type: {os.path.splitext(filepath)[1]}")
-        BaseImageProcessor.logger.info(f"File check passed: {filepath}")
+        #BaseImageProcessor.logger.info(f"File check passed: {filepath}")
         return True
 
     @staticmethod
@@ -37,7 +37,7 @@ class BaseImageProcessor:
 
     @staticmethod
     def resize(image: Image.Image, size: tuple[int, int]) -> Image.Image:
-        BaseImageProcessor.logger.info(f"Resizing image to {size}px")
+        #BaseImageProcessor.logger.info(f"Resizing image to {size}px")
         return image.resize(size, Image.Resampling.LANCZOS)
 
     @staticmethod
@@ -63,7 +63,7 @@ class BaseImageProcessor:
         best_score = float('inf')
         
         for candidate_value, candidate_img in candidates.items():
-            if candidate_img.size != size:
+            if (candidate_img.size[0] != size[0] or candidate_img.size[1] != size[1]):
                 candidate_img = BaseImageProcessor.resize(candidate_img, size)
 
             candidate_array = np.array(candidate_img.convert('L')).astype(np.float32)
@@ -94,4 +94,6 @@ class BaseImageProcessor:
 
                 BaseImageProcessor._check_file(filepath)
                 processed_image = BaseImageProcessor.process(filepath, process_func, *args, **kwargs)
-                processed_image.save(os.path.join(output_folder_path, f"processed_{filename}"))
+                output_path = os.path.join(output_folder_path, f"processed_{filename}")
+                processed_image.save(output_path)
+                BaseImageProcessor.logger.info(f"Processed image saved to {output_path}")

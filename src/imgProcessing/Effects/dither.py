@@ -7,6 +7,8 @@ OUTPUT_FOLDER = "/workspaces/ObligatoryBadApple/src/imgProcessing/textures/dice/
 SIZE = (20, 20)
 
 for img_path in listdir(INPUT_FOLDER):
+    if not img_path.lower().endswith(('.png', '.jpg', '.jpeg', '.bmp', '.gif')):
+        continue
     with Image.open(path.join(INPUT_FOLDER, img_path)) as img:
         print(f"Processing {img_path}...")
         input_image = img

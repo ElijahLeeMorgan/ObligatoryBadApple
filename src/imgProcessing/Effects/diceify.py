@@ -10,12 +10,19 @@ class Diceify(BaseImageProcessor):
         4: Image.open(DICE_FOLDER + "vanilla/dice-six-faces-four.png"),
         5: Image.open(DICE_FOLDER + "vanilla/dice-six-faces-five.png"),
         6: Image.open(DICE_FOLDER + "vanilla/dice-six-faces-six.png"),
-        10: Image.open(DICE_FOLDER + "inverted/dice-six-faces-five-black.png"),
+        22: Image.open(DICE_FOLDER + "vanilla/dice-six-faces-two-alt.png"),
+        33: Image.open(DICE_FOLDER + "vanilla/dice-six-faces-three-alt.png"),
+        66: Image.open(DICE_FOLDER + "vanilla/dice-six-faces-six-alt.png"),
+        # ======
+        10: Image.open(DICE_FOLDER + "inverted/dice-six-faces-one-black.png"),
         20: Image.open(DICE_FOLDER + "inverted/dice-six-faces-two-black.png"),
         30: Image.open(DICE_FOLDER + "inverted/dice-six-faces-three-black.png"),
         40: Image.open(DICE_FOLDER + "inverted/dice-six-faces-four-black.png"),
         50: Image.open(DICE_FOLDER + "inverted/dice-six-faces-five-black.png"),
         60: Image.open(DICE_FOLDER + "inverted/dice-six-faces-six-black.png"),
+        202: Image.open(DICE_FOLDER + "inverted/dice-six-faces-two-black-alt.png"),
+        303: Image.open(DICE_FOLDER + "inverted/dice-six-faces-three-black-alt.png"),
+        606: Image.open(DICE_FOLDER + "inverted/dice-six-faces-six-black-alt.png"),
     }
     
     @staticmethod
